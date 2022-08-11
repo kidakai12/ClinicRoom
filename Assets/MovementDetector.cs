@@ -2,6 +2,7 @@
 using static UnityEngine.ParticleSystem;
 using TMPro;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public class MovementDetector : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class MovementDetector : MonoBehaviour
     public TextMeshPro textShow;
     public GameObject meshl;
     public GameObject meshContainer;
-    public GameObject anchorObj;
     public GameObject drawMaterial;
     public GameObject tempObj;
+    public GameObject brush;
+    public float newPositionThresholdDistance = 0.05f;
+    public float inputThreshold = 0.1f;
+    public Transform movementSource;
+    public List<Vector3> positionList = new List<Vector3>();
     Renderer rend;
     public Particle[] listobject = new Particle[1000000];
     [SerializeField]
@@ -24,6 +29,8 @@ public class MovementDetector : MonoBehaviour
     }
     void Update()
     {
+        textShow.text = movementSource.position.ToString();
+        RotateBrush();
         if (!isMoving && OVRInput.Get(OVRInput.Button.Two))
         {
             StartMovement();
@@ -41,7 +48,14 @@ public class MovementDetector : MonoBehaviour
     void StartMovement()
     {
         isMoving = true;
-        tempObj = Instantiate(drawMaterial, anchorObj.transform.position, Quaternion.identity, transform); 
+
+        //Old way
+        //tempObj = Instantiate(drawMaterial, anchorObj.transform.position, Quaternion.identity, transform); 
+
+
+        //New way
+        positionList.Clear();
+        positionList.Add(movementSource.position);
     }
 
     void EndMovement()
@@ -54,7 +68,8 @@ public class MovementDetector : MonoBehaviour
 
     void UpdateMovement()
     {
-        numParticlesAlive = tempObj.GetComponent<ParticleSystem>().GetParticles(listobject);
+        //Old way
+        /*numParticlesAlive = tempObj.GetComponent<ParticleSystem>().GetParticles(listobject);
         if (OVRInput.Get(OVRInput.Button.Three))
         {
             tempObj.transform.localScale += Vector3.one;
@@ -62,8 +77,12 @@ public class MovementDetector : MonoBehaviour
         if (OVRInput.Get(OVRInput.Button.Four))
         {
             tempObj.transform.localScale -= Vector3.one;
-        }
+        }*/
 
+        //New way
+        Vector3 lastPosition = positionList[positionList.Count - 1];
+        if(Vector3.Distance(movementSource.position,lastPosition) > newPositionThresholdDistance)
+            positionList.Add(movementSource.position);
     }
 
 
@@ -87,6 +106,12 @@ public class MovementDetector : MonoBehaviour
             return 0;
         }
         );
+    }
+
+    private void RotateBrush()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(meshl.transform.position, Vector3.up);
+        brush.transform.rotation = Quaternion.RotateTowards(brush.transform.rotation,toRotation, 5000f);
     }
 
 }
