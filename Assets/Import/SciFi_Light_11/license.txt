@@ -1,0 +1,11 @@
+Model Information:
+* title:	SciFi Light 11
+* source:	https://sketchfab.com/3d-models/scifi-light-11-ba0baa5f0f514726ae81436674eddac1
+* author:	inuhitman (https://sketchfab.com/inuhitman)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SciFi Light 11" (https://sketchfab.com/3d-models/scifi-light-11-ba0baa5f0f514726ae81436674eddac1) by inuhitman (https://sketchfab.com/inuhitman) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

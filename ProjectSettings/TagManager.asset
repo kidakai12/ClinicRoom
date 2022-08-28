@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Imagine
   - ImagineDestroy
+  - RoomLight
+  - Assembly
+  - Disassembly
   layers:
   - Default
   - TransparentFX

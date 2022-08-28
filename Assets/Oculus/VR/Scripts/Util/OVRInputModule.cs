@@ -34,7 +34,7 @@ namespace UnityEngine.EventSystems
         public OVRCursor m_Cursor;
 
         [Tooltip("Gamepad button to act as gaze click")]
-        public OVRInput.Button joyPadClickButton = OVRInput.Button.One;
+        public OVRInput.Button joyPadClickButton = OVRInput.Button.SecondaryIndexTrigger;
 
         [Tooltip("Keyboard button to act as gaze click")]
         public KeyCode gazeClickKey = KeyCode.Space;
