@@ -71,7 +71,7 @@ public class SelectObjectController : MonoBehaviour
         float spawnDistance = 1.5f;
 
         Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
-        panel.transform.position = new Vector3(spawnPos.x, 1.16f,spawnPos.z); ;
+        panel.transform.position = new Vector3(spawnPos.x, 1.8f,spawnPos.z); ;
         panel.transform.rotation = new Quaternion(0, playerRotation.y, 0, playerRotation.w);
         texture.anisoLevel = 16;
         RectTransform rectRaw = img.GetComponent<RectTransform>();

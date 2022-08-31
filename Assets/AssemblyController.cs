@@ -52,7 +52,7 @@ public class AssemblyController : MonoBehaviour
             StartCoroutine(DisassemblyObject());
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.Three))
+        if (OVRInput.GetDown(OVRInput.Button.Three) || Input.GetKeyDown(KeyCode.T))
         {
             if (TriggerAssemble)
             {
