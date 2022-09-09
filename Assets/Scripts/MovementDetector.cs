@@ -19,16 +19,12 @@ public class MovementDetector : MonoBehaviour
     private GameObject nextObject;
     #endregion
 
-
-    private void Start()
-    {
-    }
     public void StartDrawing()
     {
         isMoving = true;
 
         Mesh anchorMesh = anchorObj.GetComponent<MeshFilter>().mesh;
-        prevObject = Instantiate(drawObject1, anchorObj.transform.position, Quaternion.identity, null);
+        prevObject = Instantiate(drawObject1, anchorObj.transform.position, Quaternion.identity, null) as GameObject;
         nextObject = Instantiate(drawObject, anchorObj.transform.position, Quaternion.identity, null);
 
         positionList.Clear();
@@ -103,31 +99,31 @@ public class MovementDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving && OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.Z) )
-        {
-            StartDrawing();
-        }
-        else if (isMoving && !OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.X))
-        {
-            EndDrawing();
-        }
-        else if (isMoving && OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.C))
-        {
-            UpdateDrawing();
-        }
-
-        //if (/*!isMoving && OVRInput.Get(OVRInput.Button.Two) ||*/ Input.GetKeyDown(KeyCode.Z))
+        //if (!isMoving && OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.Z))
         //{
         //    StartDrawing();
         //}
-        //else if (/*isMoving && !OVRInput.Get(OVRInput.Button.Two) ||*/ Input.GetKeyDown(KeyCode.X))
+        //else if (isMoving && !OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.X))
         //{
         //    EndDrawing();
         //}
-        //else if (/*isMoving && OVRInput.Get(OVRInput.Button.Two) ||*/ Input.GetKeyDown(KeyCode.C))
+        //else if (isMoving && OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.C))
         //{
         //    UpdateDrawing();
         //}
+
+        if (/*!isMoving && OVRInput.Get(OVRInput.Button.Two) ||*/ Input.GetKeyDown(KeyCode.Z))
+        {
+            StartDrawing();
+        }
+        else if (/*isMoving && !OVRInput.Get(OVRInput.Button.Two) ||*/ Input.GetKeyDown(KeyCode.X))
+        {
+            EndDrawing();
+        }
+        else if (/*isMoving && OVRInput.Get(OVRInput.Button.Two) ||*/ Input.GetKeyDown(KeyCode.C))
+        {
+            UpdateDrawing();
+        }
     }
 
 }
