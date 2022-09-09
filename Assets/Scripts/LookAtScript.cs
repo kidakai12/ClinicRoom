@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class LookAtScript : MonoBehaviour
 {
-    public Transform target;
+    //public Transform target;
 
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    Vector3 relativePos = target.position - transform.position;
+
+    //    transform.rotation = Quaternion.LookRotation(relativePos);
+    //}
+    public Vector3 target;
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 relativePos = target.position - transform.position;
-
-        transform.rotation = Quaternion.LookRotation(relativePos);
+        transform.LookAt(target);
     }
 }
