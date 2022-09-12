@@ -95,11 +95,52 @@ public class MeshLineContainer : MonoBehaviour
         this.GetComponent<MeshFilter>().mesh = mesh;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "ImagineDestroy")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+        if(other.gameObject.tag == "LeftHand")
+        {
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
+            {
+                this.gameObject.transform.parent = other.transform;
+            }
+
+            if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
+            {
+                this.gameObject.transform.parent = null;
+            }
+
+        }
+
+        else if (other.gameObject.tag == "RightHand")
+        {
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+            {
+                this.gameObject.transform.parent = other.transform;
+            }
+
+            if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
+            {
+                this.gameObject.transform.parent = null;
+            }
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            Debug.Log("Hand touch off");
+        }
+    }
+
+    void MapPosition(Transform target, Transform host)
+    {
+        target.position = host.position;
+        target.rotation = host.rotation;
     }
 }

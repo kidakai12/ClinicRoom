@@ -9,6 +9,8 @@ TagManager:
   - RoomLight
   - Assembly
   - Disassembly
+  - RightHand
+  - LeftHand
   layers:
   - Default
   - TransparentFX

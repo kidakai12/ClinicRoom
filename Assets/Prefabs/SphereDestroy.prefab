@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8030001756756605747}
   - component: {fileID: 8030001756756605746}
   - component: {fileID: 8030001756756605756}
-  - component: {fileID: 796433780435003527}
   m_Layer: 0
   m_Name: SphereDestroy
   m_TagString: ImagineDestroy
@@ -98,15 +97,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0.0000004172325}
---- !u!114 &796433780435003527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8030001756756605751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b2260123812a0d4eaae4ab8369da099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
